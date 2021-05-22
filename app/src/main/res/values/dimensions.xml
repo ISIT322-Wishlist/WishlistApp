@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="splash_screen_title_text_size">70sp</dimen>
+    <dimen name="intro_screen_title_size">60sp</dimen>
+    <dimen name="intro_screen_title_marginTop">70sp</dimen>
+    <dimen name="intro_image_margin_top">30sp</dimen>
+    <dimen name="intro_description_marginTop">20sp</dimen>
+    <dimen name="intro_description_marginSides">40sp</dimen>
+    <dimen name="intro_description_textSize">15sp</dimen>
+    <dimen name="intro_btns_sides">50sp</dimen>
+    <dimen name="intro_signIn_btn_marginTop">40sp</dimen>
+    <dimen name="intro_singUp_btn_marginTop">15sp</dimen>
+    <dimen name="intro_btns_textSize">15sp</dimen>
+    <dimen name="intro_btns_padding">10sp</dimen>
+<!--
+    <dimen name="footer_btn_marginBottom">30sp</dimen>
+-->
+    <!--<dimen name="footer_btn_marginSides">5sp</dimen>-->
+
+</resources>

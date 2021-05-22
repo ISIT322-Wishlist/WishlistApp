@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Wishlist</string>
+    <string name="intro_image_description">Login illustration</string>
+    <string name="intro_sign_in">SIGN IN</string>
+    <string name="intro_sign_up">SIGN UP</string>
+    <string name="intro_description_header">Let\'s get started</string>
+    <string name="intro_description">Add items manually or use our built in barcode scanner to add items you find to your Wishlist.</string>
+    <string name="main_activity_header">Your list</string>
+    <string name="main_activity_addItem">Add Item</string>
+    <string name="main_activity_scanItem">Scan Item</string>
 </resources>
