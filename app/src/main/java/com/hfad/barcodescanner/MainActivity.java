@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scanCode();
 
     }
+    //Scans the code by setting an integrator to the capture and having the code make sure it can be sued in any orientation
     private  void scanCode(){
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setCaptureActivity(CaptureAct.class);
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         integrator.initiateScan();
     }
 
-
+    //Checks if the barcode you scanned is valid and then show what the barcode represents
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
