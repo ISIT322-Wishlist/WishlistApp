@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wishlist">
         <activity
+            android:name=".SignInActivity"
+            android:exported="true"
+            android:parentActivityName=".IntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        </activity>
+        <activity
             android:name=".SignUpActivity"
+            android:exported="true"
+            android:parentActivityName=".IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>
@@ -35,11 +44,8 @@
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            >
-
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

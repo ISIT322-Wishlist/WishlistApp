@@ -8,7 +8,7 @@ public class Item {
             new Item("Golf Clubs"),
             new Item("Mountain Bike"),
             new Item("Handlebars"),
-            new Item("Wax")
+            new Item("Beer")
     };
 
     public Item(String itemName){

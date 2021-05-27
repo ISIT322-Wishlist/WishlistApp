@@ -19,8 +19,7 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,18 +38,19 @@
             android:layout_weight="1"
             android:background="@drawable/button_rounded"
             android:text="@string/main_activity_addItem"
-            android:textColor="@color/backgroundWhite"/>
+            android:textColor="@color/backgroundWhite"
+            android:onClick="onAddItem"/>
 
         <Button
             android:id="@+id/scanItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-
             android:layout_weight="1"
             android:background="@drawable/no_fill_button_rounded"
             android:text="@string/main_activity_scanItem"
-            android:textColor="@color/coral"/>
+            android:textColor="@color/coral"
+            android:onClick="onScanItem"/>
 
     </LinearLayout>
 

@@ -63,7 +63,8 @@
         android:background="@drawable/button_rounded"
         android:text="@string/intro_sign_in"
         android:textAlignment="center"
-        android:textSize="@dimen/intro_btns_textSize" />
+        android:textSize="@dimen/intro_btns_textSize"
+        android:onClick="onSignIn"/>
 
     <Button
         android:id="@+id/btn_signUp"
@@ -78,10 +79,7 @@
         android:background="@drawable/no_fill_button_rounded"
         android:textAlignment="center"
         android:text="@string/intro_sign_up"
-        android:textSize="@dimen/intro_btns_textSize" />
-
-
-
-
+        android:textSize="@dimen/intro_btns_textSize"
+        android:onClick="onSignUp"/>
 
 </LinearLayout>
