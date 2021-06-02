@@ -1,0 +1,2 @@
+rootProject.name = "WishlistADD"
+include ':app'
