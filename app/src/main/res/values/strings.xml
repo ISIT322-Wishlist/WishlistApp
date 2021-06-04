@@ -13,7 +13,7 @@
     <string name="sign_up_header">Sign Up</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="sign_up_description">Enter your name, username, and password.</string>
     <string name="sign_up_illustration_description">Sign up illustration</string>
