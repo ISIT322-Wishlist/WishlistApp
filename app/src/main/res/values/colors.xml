@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="coral">#F15946</color>
+    <color name="accentCoral">#FE8472</color>
+    <color name="offWhite">#EDF2EF</color>
+    <color name="lightBlue">#57C4E5</color>
+    <color name="darkBlue">#086788</color>
+    <color name="black">#191919</color>
+    <color name="lightBlack">#4C4C4C</color>
+    <color name="yellow">#FEDB5D</color>
+    <color name="backgroundWhite">#FFFFFF</color>
+</resources>

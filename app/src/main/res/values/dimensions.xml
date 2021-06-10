@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="splash_screen_title_text_size">70sp</dimen>
+    <dimen name="intro_screen_title_size">60sp</dimen>
+    <dimen name="intro_screen_title_marginTop">70sp</dimen>
+    <dimen name="intro_image_margin_top">30sp</dimen>
+    <dimen name="intro_description_marginTop">20sp</dimen>
+    <dimen name="intro_description_marginSides">40sp</dimen>
+    <dimen name="intro_description_textSize">15sp</dimen>
+    <dimen name="intro_btns_sides">50sp</dimen>
+    <dimen name="intro_signIn_btn_marginTop">40sp</dimen>
+    <dimen name="intro_singUp_btn_marginTop">15sp</dimen>
+    <dimen name="intro_btns_textSize">15sp</dimen>
+    <dimen name="intro_btns_padding">10sp</dimen>
+
+
+    <!-- Sign Up Activity-->
+    <dimen name="sign_up_screen_btn_marginTop">30dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
+    <dimen name="authentication_screen_content_marginTop">40dp</dimen>
+    <dimen name="authentication_description_text_size">16sp</dimen>
+    <dimen name="authentication_screen_marginStartEnd">25dp</dimen>
+    <dimen name="authentication_screen_card_view_marginTop">5dp</dimen>
+    <dimen name="card_view_elevation">10dp</dimen>
+    <dimen name="card_view_corner_radius">10dp</dimen>
+    <dimen name="card_view_layout_content_padding">16dp</dimen>
+    <dimen name="authentication_screen_til_marginStartEnd">16dp</dimen>
+    <dimen name="et_text_size">16sp</dimen>
+    <dimen name="authentication_screen_til_marginTop">20dp</dimen>
+    <dimen name="sign_up_image_margin_top">0sp</dimen>
+    <dimen name="sign_up_footer_margin_top">15sp</dimen>
+
+
+</resources>
