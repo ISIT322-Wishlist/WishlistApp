@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,12 +60,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAddItem(View view){
-        Intent intent = new Intent(this, SignInActivity.class);
+        Intent intent = new Intent(this, AddItemActivity.class);
         startActivity(intent);
     }
 
     public void onScanItem(View view){
         // Scanning Code
+        //Intent intent = new Intent(this, ScanItemActivity.class);
+        //startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

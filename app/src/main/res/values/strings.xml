@@ -29,5 +29,12 @@
     <string name="footer_sign_up_link"><u>Sign Up</u></string>
     <string name="sign_in_dont_have_account">Don\'t have an account?</string>
 
+    <!-- Add Item -->
+    <string name="item">Item</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="Price">Price</string>
+    <string name="Barcode">Barcode</string>
+    <string name="additem">Add Item</string>
+
 
 </resources>

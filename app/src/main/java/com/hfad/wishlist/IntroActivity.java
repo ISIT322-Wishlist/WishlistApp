@@ -43,6 +43,7 @@ public class IntroActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }*/
+
     public void onSignUp(View view){
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);

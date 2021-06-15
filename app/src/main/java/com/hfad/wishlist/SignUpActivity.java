@@ -55,6 +55,26 @@ public class SignUpActivity extends AppCompatActivity {
         setUpActionBar();
     }
 
+    /*@Override
+    protected void onResume(){
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+    }*/
+
     private void setUpActionBar() {
         setSupportActionBar(findViewById(R.id.toolbar_sign_up_activity));
         ActionBar actionBar = getSupportActionBar();

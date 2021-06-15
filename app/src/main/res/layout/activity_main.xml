@@ -64,7 +64,7 @@
             android:onClick="onAddItem"/>
 
         <Button
-            android:id="@+id/scanItem"
+            android:id="@+id/scanBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

@@ -31,7 +31,6 @@ public class SignInActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +60,8 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void updateUI(GoogleSignInAccount account) {
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setVisibility(View.VISIBLE);
+        signIn = findViewById(R.id.btn_sign_in);
+        signIn.setVisibility(View.VISIBLE);
     }
 
     public void onSignIn(View view){
