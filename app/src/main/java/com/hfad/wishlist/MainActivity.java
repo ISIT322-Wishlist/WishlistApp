@@ -2,6 +2,7 @@ package com.hfad.wishlist;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -15,6 +16,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Button;
+import android.content.DialogInterface;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,14 +27,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     DatabaseReference dbReff;
     TextView nameHeader;
+
+    Button scanBtn;
+    private TextView productModelText;
+
+    final ProductDataService productDataService = new ProductDataService(MainActivity.this);
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -54,9 +66,80 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Binding views
+        //productModelText = findViewById(R.id.product_model_text);
+        scanBtn = findViewById(R.id.scanBtn);
+        scanBtn.setOnClickListener(this);
+
         customStatusBar();
 
         ListView listview = (ListView) findViewById(R.id.listView);
+    }
+
+    @Override
+    public void onClick(View v) {
+        scanCode();
+    }
+
+    //Scans the code by setting an integrator to the capture and having the code make sure it can be sued in any orientation
+    private  void scanCode(){
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setOrientationLocked(false);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Scanning Code");
+        integrator.initiateScan();
+    }
+
+    //Checks if the barcode you scanned is valid and then show what the barcode represents
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null){
+            if (result.getContents()!= null){
+
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                builder.setMessage(result.getContents());
+//                builder.setTitle("Scanning Result");
+//                builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        scanCode();
+//                    }
+//                }).setNegativeButton("finish", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        finish();
+//                    }
+//                });
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
+
+                String returnedBarcode = result.getContents();
+                displayBarcodeInfo(returnedBarcode);
+
+            }
+            else{
+                Toast.makeText(this, "No Results", Toast.LENGTH_LONG).show();
+            }
+
+        }else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    protected void displayBarcodeInfo(String returnedBarcode) {
+
+        productDataService.getProductByBarcode(returnedBarcode, new ProductDataService.ProductByBarcodeResponse() {
+            @Override
+            public void onError(String message) {
+                Toast.makeText(MainActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onResponse(ProductModel productModel) {
+                productModelText.setText(productModel.toString());
+            }
+        });
     }
 
     public void onAddItem(View view){
