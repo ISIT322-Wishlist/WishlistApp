@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.view.Window;
 import android.widget.TextView;
@@ -27,12 +28,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import org.w3c.dom.Text;
+
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     DatabaseReference dbReff;
     TextView nameHeader;
+    public ArrayAdapter<Item> itemsAdapter;
+
 
     //Button scanBtn;
 
@@ -61,6 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        /*itemsAdapter = (ArrayAdapter<Item>) getIntent().getSerializableExtra("MyList");
+        System.out.println(items);*/
+
+
+
+
+
 
         // Binding views
         //productModelText = findViewById(R.id.product_model_text);

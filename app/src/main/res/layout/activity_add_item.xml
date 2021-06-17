@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/backgroundWhite"
+    android:background="@color/coral"
     tools:context=".AddItemActivity">
 
     <androidx.cardview.widget.CardView
@@ -95,12 +95,12 @@
                 android:layout_marginLeft="@dimen/intro_btns_padding"
                 android:layout_marginTop="@dimen/sign_up_screen_btn_marginTop"
                 android:layout_marginRight="@dimen/intro_btns_padding"
-                android:background="@drawable/button_rounded"
+                android:background="@drawable/no_fill_button_rounded"
                 android:gravity="center"
                 android:paddingTop="@dimen/intro_btns_padding"
                 android:paddingBottom="@dimen/intro_btns_padding"
                 android:text="@string/additem"
-                android:textColor="@android:color/white"
+                android:textColor="@color/coral"
                 android:textSize="@dimen/intro_btns_textSize"
                 android:onClick="onAddNewItem"/>
 

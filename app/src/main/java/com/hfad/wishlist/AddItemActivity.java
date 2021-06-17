@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AddItemActivity extends AppCompatActivity {
@@ -39,16 +40,15 @@ public class AddItemActivity extends AppCompatActivity {
         ListView list = inflatedView.findViewById(R.id.listView);
 
         // THIS IS CAUSING EXCEPTION
-        //ADD HERE
-        /*items = new ArrayList<>();
-        itemsAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, items);
-        itemsAdapter = new ArrayAdapter<>();
-        lvItems.setAdapter(itemsAdapter);
-        setupListViewListener();*/
+        // ADD HERE
+        //lvItems = (ListView) findViewById(R.id.lvItems);
+        items = new ArrayList<Item>();
+        itemsAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
+        list.setAdapter(itemsAdapter);
+        //setupListViewListener();
     }
 
-    private void setupListViewListener() {
+    /*private void setupListViewListener() {
         lvItems.setOnItemLongClickListener(
                 new AdapterView.OnItemLongClickListener() {
                     @Override
@@ -62,7 +62,7 @@ public class AddItemActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-    }
+    }*/
 
     public void onAddNewItem(View view) {
 
@@ -88,14 +88,16 @@ public class AddItemActivity extends AppCompatActivity {
         /*EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
         String itemText = etNewItem.getText().toString();*/
         Item newItem = new Item(sItem, sManufacturer, sPrice, sBarcode);
+
         try {
             itemsAdapter.add(newItem);
             Toast.makeText(this, "Item added.", Toast.LENGTH_LONG).show();
-
         }catch (Exception ex){
             System.out.println(ex);
             Toast.makeText(this, "Failed to add item.", Toast.LENGTH_LONG).show();
         }
+
+        System.out.println(items);
 
         // Resets EditText fields to empty
         et_itemName.setText("");
@@ -105,6 +107,7 @@ public class AddItemActivity extends AppCompatActivity {
 
         // Returns User to ListView
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("MyList", items);
         startActivity(intent);
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
