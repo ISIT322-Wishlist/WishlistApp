@@ -62,6 +62,7 @@
             android:text="@string/main_activity_addItem"
             android:textColor="@color/backgroundWhite"
             android:onClick="onAddItem"/>
+
         <Button
             android:id="@+id/scanBtn"
             android:layout_width="match_parent"
@@ -70,7 +71,8 @@
             android:layout_weight="1"
             android:background="@drawable/no_fill_button_rounded"
             android:text="@string/main_activity_scanItem"
-            android:textColor="@color/coral"/>
+            android:textColor="@color/coral"
+            android:onClick="scanCode"/>
 
     </LinearLayout>
 

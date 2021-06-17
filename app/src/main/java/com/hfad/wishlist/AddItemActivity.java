@@ -2,34 +2,53 @@ package com.hfad.wishlist;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
-public class AddItemActivity extends Activity {
-    private ArrayList<Item> items;
-    private ArrayAdapter<Item> itemsAdapter;
-    private ListView lvItems;
+public class AddItemActivity extends AppCompatActivity {
+    public ArrayList<Item> items;
+    public ArrayAdapter<Item> itemsAdapter;
+    public ListView lvItems;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
-        // ADD HERE
-        /*lvItems = (ListView) findViewById(R.id.lvItems);*/
-        items = new ArrayList<Item>();
-        itemsAdapter = new ArrayAdapter<Item>(this,
+        customStatusBar();
+
+        View inflatedView = getLayoutInflater().inflate(R.layout.activity_main, null);
+        ListView list = inflatedView.findViewById(R.id.listView);
+
+        // THIS IS CAUSING EXCEPTION
+        //ADD HERE
+        /*items = new ArrayList<>();
+        itemsAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, items);
+        itemsAdapter = new ArrayAdapter<>();
         lvItems.setAdapter(itemsAdapter);
-        /*setupListViewListener();*/
+        setupListViewListener();*/
     }
 
-    /*private void setupListViewListener() {
+    private void setupListViewListener() {
         lvItems.setOnItemLongClickListener(
                 new AdapterView.OnItemLongClickListener() {
                     @Override
@@ -43,7 +62,7 @@ public class AddItemActivity extends Activity {
                         return true;
                     }
                 });
-    }*/
+    }
 
     public void onAddNewItem(View view) {
 
@@ -56,12 +75,12 @@ public class AddItemActivity extends Activity {
         // Converts EditText fields to proper types
         String sItem = et_itemName.getText().toString().trim();
         String sManufacturer = et_manufacturer.getText().toString().trim();
-        Double sPrice = Double.parseDouble(et_price.getText().toString());
+        String sPrice = et_price.getText().toString().trim();
         String sBarcode = et_barcode.getText().toString().trim();
 
         // Prevents a null item
         if (sItem.isEmpty()) {
-            et_itemName.setError("First name is required.");
+            et_itemName.setError("Item is required.");
             et_itemName.requestFocus();
             return;
         }
@@ -69,7 +88,14 @@ public class AddItemActivity extends Activity {
         /*EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
         String itemText = etNewItem.getText().toString();*/
         Item newItem = new Item(sItem, sManufacturer, sPrice, sBarcode);
-        itemsAdapter.add(newItem);
+        try {
+            itemsAdapter.add(newItem);
+            Toast.makeText(this, "Item added.", Toast.LENGTH_LONG).show();
+
+        }catch (Exception ex){
+            System.out.println(ex);
+            Toast.makeText(this, "Failed to add item.", Toast.LENGTH_LONG).show();
+        }
 
         // Resets EditText fields to empty
         et_itemName.setText("");
@@ -80,6 +106,15 @@ public class AddItemActivity extends Activity {
         // Returns User to ListView
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
+    }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void customStatusBar(){
+        Window window = this.getWindow();
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.coral));
     }
 }
