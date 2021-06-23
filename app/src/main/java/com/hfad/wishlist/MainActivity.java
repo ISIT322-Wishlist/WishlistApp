@@ -31,14 +31,19 @@ import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
     DatabaseReference dbReff;
     TextView nameHeader;
-    public ArrayAdapter<Item> itemsAdapter;
+    ArrayList<Item> itemsList = new ArrayList<Item>();
+    ArrayAdapter itemsAdapter;
 
+
+    //public ArrayAdapter<Item> itemsAdapter;
 
     //Button scanBtn;
 
@@ -68,13 +73,37 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             }
         });
 
-        /*itemsAdapter = (ArrayAdapter<Item>) getIntent().getSerializableExtra("MyList");
-        System.out.println(items);*/
+        itemsAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, itemsList);
 
+        // Gets list of items from AddItemActivity
+        itemsList = (ArrayList<Item>) getIntent().getSerializableExtra("items");
 
+        if(itemsList != null)
+        {
+            ListView listView = findViewById(R.id.listView);
+            itemsAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, itemsList);
+            listView.setAdapter(itemsAdapter);
+        }
 
+        Button addItemBtn = findViewById(R.id.addItem);
+        addItemBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
+                if(itemsAdapter.isEmpty()){
+                    // ListView is Empty, creating new list
+                    Intent intent = new Intent(getApplicationContext(),AddItemActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    // Send existing list to add more items
+                    Intent intent = new Intent(getApplicationContext(),AddItemActivity.class);
+                    intent.putExtra("existingitems", itemsList);
+                    startActivity(intent);
+                }
+            }
+        });;
 
         // Binding views
         //productModelText = findViewById(R.id.product_model_text);
@@ -82,8 +111,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         scanBtn.setOnClickListener(this);*/
 
         customStatusBar();
-        ListView listview = (ListView) findViewById(R.id.listView);
-
     }
 
     /*@Override
@@ -108,26 +135,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         if (result != null){
             if (result.getContents()!= null){
 
-//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//                builder.setMessage(result.getContents());
-//                builder.setTitle("Scanning Result");
-//                builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        scanCode();
-//                    }
-//                }).setNegativeButton("finish", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        finish();
-//                    }
-//                });
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
-
                 String returnedBarcode = result.getContents();
                 displayBarcodeInfo(returnedBarcode);
-
             }
             else{
                 Toast.makeText(this, "No Results", Toast.LENGTH_LONG).show();
@@ -152,10 +161,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         });
     }
 
-    public void onAddItem(View view){
-        Intent intent = new Intent(this, AddItemActivity.class);
-        startActivity(intent);
-    }
+//    public void onAddItem(View view){
+//        Intent intent = new Intent(this, AddItemActivity.class);
+//        startActivity(intent);
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void customStatusBar(){

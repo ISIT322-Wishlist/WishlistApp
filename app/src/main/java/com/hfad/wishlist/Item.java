@@ -1,10 +1,21 @@
 package com.hfad.wishlist;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
     public String ItemName;
-    public String Manufacturer = null;
-    public String Price = null;
-    public String Barcode = null;
+    public String Manufacturer;
+    public String Price;
+    public String Barcode;
+
+    @Override
+    public String toString() {
+
+        return  "ItemName: " + ItemName + '\n' +
+                "Manufacturer: " + Manufacturer + '\n' +
+                "Price: " + Price + '\n' +
+                "Barcode: " + Barcode;
+    }
 
     public Item(String sItem, String sManufacturer, String sPrice, String sBarcode) {
         ItemName = sItem;
