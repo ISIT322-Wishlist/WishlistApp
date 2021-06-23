@@ -71,8 +71,7 @@
             android:layout_weight="1"
             android:background="@drawable/no_fill_button_rounded"
             android:text="@string/main_activity_scanItem"
-            android:textColor="@color/coral"
-            android:onClick="scanCode"/>
+            android:textColor="@color/coral"/>
 
     </LinearLayout>
 

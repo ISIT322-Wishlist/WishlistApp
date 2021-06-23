@@ -93,12 +93,10 @@ public class ProductModel {
     // Formatting what gets displayed to Text View from API call
     @Override
     public String toString() {
-        return  "Barcode Number: " + barcode_number + '\n' +
-                "Product Name: " + product_name + '\n' +
-                "Title: " + title + '\n' +
+
+        return  "ItemName: " + product_name + '\n' +
                 "Manufacturer: " + manufacturer + '\n' +
-                "Brand: " + brand + '\n' +
-                "Description: " + description;
+                "Barcode: " + barcode_number;
     }
 
     public String getBarcode_number() {

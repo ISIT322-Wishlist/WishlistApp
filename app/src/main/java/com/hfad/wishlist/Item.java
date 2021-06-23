@@ -23,4 +23,38 @@ public class Item implements Serializable {
         Price = sPrice;
         Barcode = sBarcode;
     }
+
+    public Item(){};
+
+    public String getItemName() {
+        return ItemName;
+    }
+
+    public void setItemName(String itemName) {
+        ItemName = itemName;
+    }
+
+    public String getManufacturer() {
+        return Manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        Manufacturer = manufacturer;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public String getBarcode() {
+        return Barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        Barcode = barcode;
+    }
 }
